@@ -224,7 +224,7 @@ public class Hero : MonoBehaviour
             Debug.Log("ground collision");
             this.canJump = true;
         }*/
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" || other.tag == "ProjectileEnemy")
         {
             if (!invincible)
             {
@@ -270,7 +270,6 @@ public class Hero : MonoBehaviour
             if (opacityDown)
             {
                 opacity -= Time.deltaTime * 5;
-
             }
             else
             {

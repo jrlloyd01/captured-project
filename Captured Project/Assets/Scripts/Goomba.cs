@@ -12,6 +12,8 @@ public class Goomba : MonoBehaviour
     public float health = 3f;
     public bool changeDirection = true;
     Rigidbody body;
+    GameObject lastTrigger = null;
+
     void Awake()
     {
         bndCheck = GetComponent<BoundsCheck>();
@@ -59,6 +61,15 @@ public class Goomba : MonoBehaviour
     void OnCollisionEnter(Collision coll)
     {
         GameObject other = coll.gameObject;
+        if (other == lastTrigger)
+        {
+            return;
+        }
+        else
+        {
+            lastTrigger = other;
+        }
+
         if (other.tag != "Hero" && other.tag != "ProjectileHero")
         {
             if (moveActive && changeDirection && (body.velocity.y != 0))
