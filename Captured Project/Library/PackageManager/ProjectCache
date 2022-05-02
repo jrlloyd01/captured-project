@@ -1,6 +1,7 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: C:/Users/Josh/Captured Project/Packages/manifest.json
+    m_FilePath: C:/Users/Josh/Documents/GitHub Projects/captured-project/Captured
+      Project/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
@@ -8,12 +9,13 @@ m_ProjectFiles:
       ticks: 637854676669861101
     m_Hash: 2740223642
   m_LockFileStatus:
-    m_FilePath: C:/Users/Josh/Captured Project/Packages/packages-lock.json
+    m_FilePath: C:/Users/Josh/Documents/GitHub Projects/captured-project/Captured
+      Project/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637854676766467022
+      ticks: 637871183253462481
     m_Hash: 2771791958
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -25,7 +27,8 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.3.9
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.collab-proxy@1.3.9
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.collab-proxy@1.3.9
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Unity Collaborate
@@ -160,7 +163,8 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.7
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.ide.rider@2.0.7
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.ide.rider@2.0.7
       assetPath: Packages/com.unity.ide.rider
       name: com.unity.ide.rider
       displayName: JetBrains Rider Editor
@@ -206,6 +210,7 @@ m_PackageAssets:
         - 3.0.10
         - 3.0.12
         - 3.0.13
+        - 3.0.14
         compatible:
         - 1.0.2
         - 1.0.6
@@ -236,6 +241,7 @@ m_PackageAssets:
         - 3.0.10
         - 3.0.12
         - 3.0.13
+        - 3.0.14
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -275,7 +281,8 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.5
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.ide.visualstudio@2.0.5
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.ide.visualstudio@2.0.5
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -358,7 +365,8 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.2.3
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.ide.vscode@1.2.3
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.ide.vscode@1.2.3
       assetPath: Packages/com.unity.ide.vscode
       name: com.unity.ide.vscode
       displayName: Visual Studio Code Editor
@@ -431,7 +439,8 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 5.0.4
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.probuilder@5.0.4
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.probuilder@5.0.4
       assetPath: Packages/com.unity.probuilder
       name: com.unity.probuilder
       displayName: ProBuilder
@@ -586,7 +595,8 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.3-preview.6
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.progrids@3.0.3-preview.6
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.progrids@3.0.3-preview.6
       assetPath: Packages/com.unity.progrids
       name: com.unity.progrids
       displayName: ProGrids
@@ -663,7 +673,8 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.1.19
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.test-framework@1.1.19
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.test-framework@1.1.19
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -711,6 +722,7 @@ m_PackageAssets:
         - 1.1.29
         - 1.1.30
         - 1.1.31
+        - 2.0.1-exp.1
         - 2.0.1-pre.12
         - 2.0.1-pre.18
         compatible:
@@ -723,6 +735,7 @@ m_PackageAssets:
         - 1.1.29
         - 1.1.30
         - 1.1.31
+        - 2.0.1-exp.1
         - 2.0.1-pre.12
         - 2.0.1-pre.18
         verified: 1.1.31
@@ -768,7 +781,8 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.1
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.textmeshpro@3.0.1
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.textmeshpro@3.0.1
       assetPath: Packages/com.unity.textmeshpro
       name: com.unity.textmeshpro
       displayName: TextMeshPro
@@ -935,7 +949,8 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.4.4
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.timeline@1.4.4
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.timeline@1.4.4
       assetPath: Packages/com.unity.timeline
       name: com.unity.timeline
       displayName: Timeline
@@ -2945,7 +2960,8 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.5
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.ext.nunit@1.0.5
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.ext.nunit@1.0.5
       assetPath: Packages/com.unity.ext.nunit
       name: com.unity.ext.nunit
       displayName: Custom NUnit
@@ -3008,7 +3024,8 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.3
       source: 1
-      resolvedPath: C:\Users\Josh\Captured Project\Library\PackageCache\com.unity.settings-manager@1.0.3
+      resolvedPath: C:\Users\Josh\Documents\GitHub Projects\captured-project\Captured
+        Project\Library\PackageCache\com.unity.settings-manager@1.0.3
       assetPath: Packages/com.unity.settings-manager
       name: com.unity.settings-manager
       displayName: Settings Manager
@@ -3067,5 +3084,6 @@ m_PackageAssets:
         path: 
   m_LocalPackages:
     m_LocalFileStatus: []
-m_ProjectPath: C:/Users/Josh/Captured Project/Packages
+m_ProjectPath: C:/Users/Josh/Documents/GitHub Projects/captured-project/Captured
+  Project/Packages
 m_EditorVersion: 2020.2.1f1 (270dd8c3da1c)
