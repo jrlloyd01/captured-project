@@ -5,13 +5,13 @@ using UnityEngine;
 public class FollwerEnemy : MonoBehaviour
 {
     public bool active = false;
-    public bool moveActive = false;
     public bool left = true;
     public BoundsCheck bndCheck;
     public float movementSpeed = 2.5f;
+    public float yMovementSpeed = 1f;
     public float health = 3f;
     Rigidbody body;
-    GameObject hero;
+    public GameObject hero;
 
     void Awake()
     {
@@ -26,6 +26,7 @@ public class FollwerEnemy : MonoBehaviour
 
     void Update()
     {
+        this.transform.rotation = new Quaternion(0, 270, 0, 0);
         if (!active)
         {
             if (bndCheck.isOnScreen)
@@ -38,11 +39,11 @@ public class FollwerEnemy : MonoBehaviour
             move();
             if (hero.transform.position.x <= this.transform.position.x)
             {
-                this.transform.rotation = new Quaternion(0, 180, 0, 0);
+                this.transform.rotation = new Quaternion(0, 90, 0, 0);
             }
             else
             {
-                this.transform.rotation = new Quaternion(0, 0, 0, 0);
+                this.transform.rotation = new Quaternion(0, 90, 0, 0);
             }
         }
     }
@@ -50,22 +51,43 @@ public class FollwerEnemy : MonoBehaviour
     public void move()
     {
         Vector3 destination = hero.transform.position;
-        if (destination.x < hero.transform.position.x)
+        Vector3 newLoc = this.transform.position;
+        if (this.transform.position.x > destination.x)
         {
-            destination.x += (movementSpeed * Time.deltaTime);
+            newLoc.x -= (movementSpeed * Time.deltaTime);
         }
-        else if (destination.x > hero.transform.position.x)
+        else if (this.transform.position.x < destination.x)
         {
-            destination.x -= (movementSpeed * Time.deltaTime);
+            newLoc.x += (movementSpeed * Time.deltaTime);
         }
-        transform.position = destination;
+        if (this.transform.position.y > destination.y)
+        {
+            newLoc.y -= (yMovementSpeed * Time.deltaTime);
+        }
+        else if (this.transform.position.y < destination.y)
+        {
+            newLoc.y += (yMovementSpeed * Time.deltaTime);
+        }
+        transform.position = newLoc;
+    }
+
+    public void resetVelocity()
+    {
+        body.velocity = Vector3.zero;
+    }
+
+    public void resetCollider()
+    {
+        this.GetComponent<Collider>().enabled = true;
     }
 
     void OnCollisionEnter(Collision coll)
     {
         GameObject other = coll.gameObject;
+        Invoke("resetVelocity",.5f);
         if (other.tag == "ProjectileHero")
         {
+
             float damage = other.GetComponent<ProjectileHero>().damage;
             Debug.Log(damage);
             health = health - damage;
@@ -75,6 +97,11 @@ public class FollwerEnemy : MonoBehaviour
                 //score += 100;
             }
             Destroy(other);
+        }
+        else if (other.tag == "Hero")
+        {
+            this.GetComponent<Collider>().enabled = false;
+            Invoke("resetCollider",.5f);
         }
     }
 }

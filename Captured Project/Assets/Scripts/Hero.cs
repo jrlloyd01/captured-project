@@ -249,9 +249,15 @@ public class Hero : MonoBehaviour
     {
         invincible = false;
         opacityDown = true;
-        color = mat.color;
-        color.a = 1f;
-        mat.color = color;
+        opacity = 1f;
+        Transform[] allChildren = GetComponentsInChildren<Transform>();
+        foreach (Transform child in allChildren)
+        {
+            color = child.GetComponent<MeshRenderer>().material.color;
+            color.a = opacity;
+            child.GetComponent<MeshRenderer>().material.color = color;
+        }
+
     }
 
     void CheckJump()
@@ -267,6 +273,7 @@ public class Hero : MonoBehaviour
     {
         if (invincible)
         {
+            
             if (opacityDown)
             {
                 opacity -= Time.deltaTime * 5;
@@ -275,9 +282,6 @@ public class Hero : MonoBehaviour
             {
                 opacity += Time.deltaTime * 5;
             }
-            color = mat.color;
-            color.a = opacity;
-            mat.color = color;
             if (opacity <= 0)
             {
                 opacity = 0;
@@ -288,6 +292,14 @@ public class Hero : MonoBehaviour
                 opacity = 1;
                 opacityDown = true;
             }
+            Transform[] allChildren = GetComponentsInChildren<Transform>();
+            foreach (Transform child in allChildren)
+            {
+                color = child.GetComponent<MeshRenderer>().material.color;
+                color.a = opacity;
+                child.GetComponent<MeshRenderer>().material.color = color;
+            }
+
         }
     }
 }
