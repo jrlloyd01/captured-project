@@ -100,7 +100,6 @@ public class ShooterEnemy : MonoBehaviour
                 Destroy(this.gameObject);
                 //score += 100;
             }
-            other = lastTrigger;
             Destroy(other);
         }
     }

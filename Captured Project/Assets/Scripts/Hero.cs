@@ -30,6 +30,7 @@ public class Hero : MonoBehaviour
     {
         body = this.GetComponent<Rigidbody>();
         mat = this.GetComponent<MeshRenderer>().material;
+        reloadTime = .5f;
     }
 
     void FixedUpdate()
@@ -240,7 +241,16 @@ public class Hero : MonoBehaviour
             {
 
             }
-
+        }
+        else if (other.tag == "PowerUpS")
+        {
+            shotgun = true;
+            Destroy(other);
+        }
+        else if (other.tag == "PowerUpR")
+        {
+            rapidFire = true;
+            reloadTime = reloadTime / 3;
         }
 
     }

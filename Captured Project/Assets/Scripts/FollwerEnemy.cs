@@ -37,14 +37,14 @@ public class FollwerEnemy : MonoBehaviour
         else
         {
             move();
-            if (hero.transform.position.x <= this.transform.position.x)
+            /*if (hero.transform.position.x <= this.transform.position.x)
             {
                 this.transform.rotation = new Quaternion(0, 90, 0, 0);
             }
             else
             {
                 this.transform.rotation = new Quaternion(0, 90, 0, 0);
-            }
+            }*/
         }
     }
 
@@ -60,6 +60,7 @@ public class FollwerEnemy : MonoBehaviour
         {
             newLoc.x += (movementSpeed * Time.deltaTime);
         }
+
         if (this.transform.position.y > destination.y)
         {
             newLoc.y -= (yMovementSpeed * Time.deltaTime);
