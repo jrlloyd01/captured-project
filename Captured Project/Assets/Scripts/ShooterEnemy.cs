@@ -51,7 +51,7 @@ public class ShooterEnemy : MonoBehaviour
                 this.transform.rotation = new Quaternion(0, 0, 0, 0);
                 left = false;
             }
-            if (elapsedTime > 1.5f)
+            if (elapsedTime > 3f)
             {
                 fire();
                 elapsedTime = 0;

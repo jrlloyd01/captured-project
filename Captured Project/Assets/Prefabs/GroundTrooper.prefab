@@ -390,6 +390,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3916993846292352523}
   - component: {fileID: 1065377164585656635}
+  - component: {fileID: -6071758751453762748}
+  - component: {fileID: 6292506026726726464}
   m_Layer: 8
   m_Name: GroundTrooper
   m_TagString: Enemy
@@ -431,3 +433,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &-6071758751453762748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8719973200463796810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed3bcfab223a8545aaec2a08f0035f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  moveActive: 0
+  left: 1
+  bndCheck: {fileID: 0}
+  movementSpeed: 5
+  health: 3
+  changeDirection: 1
+--- !u!114 &6292506026726726464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8719973200463796810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbeb78e317605014bb5770b62e0e1c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2
+  camWidth: 0
+  camHeight: 0
+  isOnScreen: 0
+  offRight: 0
+  offLeft: 0
+  offUp: 0
+  offDown: 0
