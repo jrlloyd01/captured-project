@@ -256,7 +256,7 @@ public class Hero : MonoBehaviour
 
     void CheckJump()
     {
-        if (!canJumpChecked && body.velocity.y == 0f)
+        if (!canJumpChecked && body.velocity.y > -.1 && body.velocity.y < .1)
         {
             canJump = true;
             canJumpChecked = true;
