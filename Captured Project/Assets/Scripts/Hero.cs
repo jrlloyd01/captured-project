@@ -252,6 +252,10 @@ public class Hero : MonoBehaviour
             rapidFire = true;
             reloadTime = reloadTime / 3;
         }
+        else if (other.tag == "PowerUpF")
+        {
+            flying = true;
+        }
 
     }
 
