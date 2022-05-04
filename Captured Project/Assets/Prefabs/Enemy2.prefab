@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 534752967154007533}
   - component: {fileID: 8997165942057928100}
   - component: {fileID: 53700493351022143}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 1620664717080275975}
   - component: {fileID: 248956567078248069}
   - component: {fileID: 4123464729829411431}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,9 +203,9 @@ GameObject:
   - component: {fileID: 6638804365051745173}
   - component: {fileID: -4685959728234166676}
   - component: {fileID: 3054058332318732137}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 4312215898884386761}
   - component: {fileID: 1738668770879562866}
   - component: {fileID: 9077067939892393123}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
