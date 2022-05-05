@@ -10,7 +10,7 @@ public class Goomba : MonoBehaviour
     public BoundsCheck bndCheck;
     public float movementSpeed = 5f;
     public float health = 3f;
-    public bool changeDirection = true;
+    //public bool changeDirection = true;
     Rigidbody body;
     GameObject lastTrigger = null;
 
@@ -72,24 +72,24 @@ public class Goomba : MonoBehaviour
 
         if (other.tag != "Hero" && other.tag != "ProjectileHero")
         {
-            if (moveActive && changeDirection && (body.velocity.y != 0))
+            /*if (moveActive && changeDirection && (body.velocity.y != 0))
             {
-                left = !left;
+                //left = !left;
             }
             else
-            {
-                moveActive = true;
-            }
+            {*/
+            moveActive = true;
+            //}
         }
         else if (other.tag == "Hero")
         {
-            changeDirection = false;
-            Invoke("resetChangeDirection", 2f);
+            //changeDirection = false;
+            //Invoke("resetChangeDirection", 2f);
         }
         else if (other.tag == "ProjectileHero")
         {
-            changeDirection = false;
-            Invoke("resetChangeDirection", 2f);
+            //changeDirection = false;
+            //Invoke("resetChangeDirection", 2f);
             float damage = other.GetComponent<ProjectileHero>().damage;
             Debug.Log(damage);
             health = health - damage;
@@ -102,8 +102,8 @@ public class Goomba : MonoBehaviour
         }
     }
 
-    void resetChangeDirection()
+    /*void resetChangeDirection()
     {
         changeDirection = true;
-    }
+    }*/
 }

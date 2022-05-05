@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
@@ -22,25 +24,30 @@ public class Hero : MonoBehaviour
     public bool shotgun = false;
     public bool invincible = false;
     public bool opacityDown = true;
+    public float timeLimit = 300f;
+    public Text time;
+    public Text scoreT;
     Material mat;
     Color color;
+    private BoundsCheck bndCheck;
     public float opacity = 1f;
+    public int score = 0;
 
     void Start()
     {
         body = this.GetComponent<Rigidbody>();
         mat = this.GetComponent<MeshRenderer>().material;
         reloadTime = .5f;
-    }
-
-    void FixedUpdate()
-    {
-
+        timeLimit = 300f;
+        bndCheck = GetComponent<BoundsCheck>();
     }
 
     void Update()
     {
         elapsedTimeShoot += Time.deltaTime;//to add limited fire rate
+        timeLimit -= Time.deltaTime;
+        time.text = "Time: " + Mathf.Ceil(timeLimit);
+        scoreT.text = "Score: " + score;
         float xInput = Input.GetAxis("Horizontal");
         float yInput = Input.GetAxis("Vertical");
         Vector3 pos = transform.position;
@@ -112,6 +119,16 @@ public class Hero : MonoBehaviour
             //Debug.Log(multiplier);
         }
         invincibilityFlash();
+        if (bndCheck.offDown)
+        {
+            health = 0;
+            Invoke("loadEnd", 1f);
+        }
+    }
+
+    public void increaseScore(int score)
+    {
+
     }
 
     public void jump()
@@ -121,7 +138,6 @@ public class Hero : MonoBehaviour
             body.AddForce(0, jumpForce, 0);
             canJump = false;
         }
-
     }
 
     void Fire()
@@ -175,7 +191,7 @@ public class Hero : MonoBehaviour
                     projGO = Instantiate(projectile);
                     //projGO.transform.localScale = new Vector3(multiplierScaleX, multiplierScaleY, multiplierScaleZ);
                     projGO.GetComponent<ProjectileHero>().setDamage(multiplier);
-                    projGO.transform.position = transform.position;
+                    projGO.transform.position = this.transform.position;
                     Rigidbody rigidB = projGO.GetComponent<Rigidbody>();
                     if (right)
                     {
@@ -196,7 +212,7 @@ public class Hero : MonoBehaviour
                 for (int i = 0; i < 5; i++)
                 {
                     projGO = Instantiate(projectile);
-                    projGO.transform.position = transform.position;
+                    projGO.transform.position = this.transform.position;
                     Rigidbody rigidB = projGO.GetComponent<Rigidbody>();
                     if (right)
                     {
@@ -215,6 +231,13 @@ public class Hero : MonoBehaviour
         }
         multiplier = 1;
     }
+
+    public void loadEnd()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+
     void OnCollisionEnter(Collision coll)
     {
         GameObject other = coll.gameObject;
@@ -235,6 +258,7 @@ public class Hero : MonoBehaviour
                 if (health == 0)
                 {
                     Destroy(this.gameObject);
+                    Invoke("loadEnd", 1f);
                 }
             }
             else
@@ -245,7 +269,7 @@ public class Hero : MonoBehaviour
         else if (other.tag == "PowerUpS")
         {
             shotgun = true;
-            Destroy(other);
+            Destroy(other.transform.parent.gameObject);
         }
         else if (other.tag == "PowerUpR")
         {
