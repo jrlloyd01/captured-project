@@ -25,7 +25,7 @@ public class ShooterEnemy : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(health);
+        //Debug.Log(health);
         body = this.GetComponent<Rigidbody>();
         hero = GameObject.FindWithTag("Hero");
     }
@@ -95,7 +95,7 @@ public class ShooterEnemy : MonoBehaviour
         {
             float damage = other.GetComponent<ProjectileHero>().damage;
             health -= damage;
-            Debug.Log("Health: " + health);
+            //Debug.Log("Health: " + health);
             if (health <= 0)
             {
                 Destroy(this.gameObject);

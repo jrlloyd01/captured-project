@@ -64,12 +64,12 @@ public class TeleporterEnemy : MonoBehaviour
         else
         {
             elapsedTime += Time.deltaTime;
-            if (elapsedTime >= 1f && !shot)
+            if (elapsedTime >= 1.5f && !shot)
             {
                 fire();
                 //Debug.Log("Shot");
             }
-            else if (elapsedTime >= 1f && shot)
+            else if (elapsedTime >= 1.5f && shot)
             {
                 teleport();
             }
@@ -123,7 +123,12 @@ public class TeleporterEnemy : MonoBehaviour
 
     public void reappear()
     {
-        //this.GetComponent<Collider>().enabled = true;
+        Transform[] allChildren = GetComponentsInChildren<Transform>();
+        foreach (Transform child in allChildren)
+        {
+            child.gameObject.GetComponent<Collider>().enabled = true;
+        }
+        this.GetComponent<Collider>().enabled = true;
 
         opacity += Time.deltaTime * 2;
         //Debug.Log(opacity);
@@ -135,7 +140,7 @@ public class TeleporterEnemy : MonoBehaviour
             disappeared = false;
             locationChosen = false;
         }
-        Transform[] allChildren = GetComponentsInChildren<Transform>();
+
         foreach (Transform child in allChildren)
         {
             color = child.GetComponent<MeshRenderer>().material.color;
@@ -146,7 +151,12 @@ public class TeleporterEnemy : MonoBehaviour
 
     public void disappear()
     {
-        //this.GetComponent<Collider>().enabled = false;
+        Transform[] allChildren = this.GetComponentsInChildren<Transform>();
+        foreach (Transform child in allChildren)
+        {
+            child.gameObject.GetComponent<Collider>().enabled = false;
+        }
+        this.GetComponent<Collider>().enabled = false;
         opacity -= Time.deltaTime;
         if (opacity <= 0)
         {
@@ -155,7 +165,7 @@ public class TeleporterEnemy : MonoBehaviour
             elapsedTime = 0;
             chooseLocation();
         }
-        Transform[] allChildren = this.GetComponentsInChildren<Transform>();
+        
         foreach (Transform child in allChildren)
         {
             //Debug.Log("Children");

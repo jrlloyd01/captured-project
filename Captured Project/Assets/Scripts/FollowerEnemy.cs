@@ -85,7 +85,7 @@ public class FollowerEnemy : MonoBehaviour
         if (other.tag == "ProjectileHero")
         {
             float damage = other.GetComponent<ProjectileHero>().damage;
-            Debug.Log(damage);
+            //Debug.Log(damage);
             health = health - damage;
             if (health <= 0)
             {
