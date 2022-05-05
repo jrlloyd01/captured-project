@@ -13,6 +13,7 @@ public class TeleporterEnemy : MonoBehaviour
     float opacity = 1f;
     float elapsedTime = 0f;
     bool shot = false;
+    private bool scoreAdded = false;
     GameObject hero;
     bool locationChosen = false;
     Vector3 location;
@@ -32,7 +33,7 @@ public class TeleporterEnemy : MonoBehaviour
     {
         if(bndCheck == null)
         {
-            Debug.Log("bndCheck is NULL");
+            //Debug.Log("bndCheck is NULL");
             bndCheck = this.GetComponent<BoundsCheck>();
         }
         //body = this.GetComponent<Rigidbody>();
@@ -66,7 +67,7 @@ public class TeleporterEnemy : MonoBehaviour
             if (elapsedTime >= 1f && !shot)
             {
                 fire();
-                Debug.Log("Shot");
+                //Debug.Log("Shot");
             }
             else if (elapsedTime >= 1f && shot)
             {
@@ -157,10 +158,10 @@ public class TeleporterEnemy : MonoBehaviour
         Transform[] allChildren = this.GetComponentsInChildren<Transform>();
         foreach (Transform child in allChildren)
         {
-            Debug.Log("Children");
+            //Debug.Log("Children");
             if(child.GetComponent<MeshRenderer>().material.color == null)
             {
-                Debug.Log("doesn't contain color");
+                //Debug.Log("doesn't contain color");
             }
             color = child.GetComponent<MeshRenderer>().material.color;
             color.a = opacity;
@@ -191,7 +192,11 @@ public class TeleporterEnemy : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(this.gameObject);
-                //score += 100;
+                if (!scoreAdded)
+                {
+                    hero.GetComponent<Hero>().increaseScore(300);
+                    scoreAdded = true;
+                }
             }
             Destroy(other);
         }

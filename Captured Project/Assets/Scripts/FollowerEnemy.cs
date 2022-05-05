@@ -11,6 +11,7 @@ public class FollowerEnemy : MonoBehaviour
     public float movementSpeed = 2.5f;
     public float yMovementSpeed = 1f;
     public float health = 3f;
+    private bool scoreAdded = false;
     Rigidbody body;
     GameObject hero;
 
@@ -89,7 +90,12 @@ public class FollowerEnemy : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(this.gameObject);
-                //score += 100;
+                if(!scoreAdded)
+                {
+                    hero.GetComponent<Hero>().increaseScore(200);
+                    scoreAdded = true;
+                }
+
             }
             Destroy(other);
         }

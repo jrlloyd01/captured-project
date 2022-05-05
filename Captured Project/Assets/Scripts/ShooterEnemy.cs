@@ -13,6 +13,7 @@ public class ShooterEnemy : MonoBehaviour
     public GameObject projectileEnemy;
     public float projectileSpeed = 10f;
     float elapsedTime = 0;
+    private bool scoreAdded = false;
     Rigidbody body;
     GameObject hero;
     GameObject lastTrigger = null;
@@ -98,7 +99,11 @@ public class ShooterEnemy : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(this.gameObject);
-                //score += 100;
+                if (!scoreAdded)
+                {
+                    hero.GetComponent<Hero>().increaseScore(200);
+                    scoreAdded = true;
+                }
             }
             Destroy(other);
         }

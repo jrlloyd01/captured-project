@@ -10,6 +10,8 @@ public class Goomba : MonoBehaviour
     public BoundsCheck bndCheck;
     public float movementSpeed = 5f;
     public float health = 3f;
+    public GameObject hero;
+    private bool scoreAdded = false;
     //public bool changeDirection = true;
     Rigidbody body;
     GameObject lastTrigger = null;
@@ -22,6 +24,7 @@ public class Goomba : MonoBehaviour
     void Start()
     {
         body = this.GetComponent<Rigidbody>();
+        hero = GameObject.FindWithTag("Hero");
     }
 
     void Update()
@@ -55,6 +58,8 @@ public class Goomba : MonoBehaviour
                 pos.x += movementSpeed * Time.deltaTime;
                 this.transform.position = pos;
             }
+            if (this.transform.position.y <= -10)
+                Destroy(this);
         }
     }
 
@@ -91,12 +96,16 @@ public class Goomba : MonoBehaviour
             //changeDirection = false;
             //Invoke("resetChangeDirection", 2f);
             float damage = other.GetComponent<ProjectileHero>().damage;
-            Debug.Log(damage);
+            //Debug.Log(damage);
             health = health - damage;
             if (health <= 0)
             {
                 Destroy(this.gameObject);
-                //score += 100;
+                if (!scoreAdded)
+                {
+                    hero.GetComponent<Hero>().increaseScore(100);
+                    scoreAdded = true;
+                }
             }
             Destroy(other);
         }

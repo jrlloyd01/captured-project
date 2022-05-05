@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
-    public int health = 3;
+    public int health = 5;
     public float elapsedTimeShoot = 0f;
     public float movementSpeed = 5f;
     public float projectileSpeed = 30f;
@@ -27,6 +27,8 @@ public class Hero : MonoBehaviour
     public float timeLimit = 300f;
     public Text time;
     public Text scoreT;
+    public Text timeScoreT;
+    public GameObject wings;
     Material mat;
     Color color;
     private BoundsCheck bndCheck;
@@ -38,7 +40,11 @@ public class Hero : MonoBehaviour
         body = this.GetComponent<Rigidbody>();
         mat = this.GetComponent<MeshRenderer>().material;
         reloadTime = .5f;
+        timeScoreT.enabled = false;
+        score = 0;
         timeLimit = 300f;
+        health = 5;
+        wings.SetActive(false);
         bndCheck = GetComponent<BoundsCheck>();
     }
 
@@ -56,6 +62,7 @@ public class Hero : MonoBehaviour
         if (flying)
         {
             canJump = false;
+            wings.SetActive(true);
             body.useGravity = false;
             pos.y += yInput * movementSpeed * Time.deltaTime;
         }
@@ -119,16 +126,22 @@ public class Hero : MonoBehaviour
             //Debug.Log(multiplier);
         }
         invincibilityFlash();
-        if (bndCheck.offDown)
+        if (this.transform.position.y <= -10)
         {
             health = 0;
             Invoke("loadEnd", 1f);
         }
+        if(this.transform.position.y >=30)
+        {
+            Vector3 newLoc = this.transform.position;
+            newLoc.y = 30;
+            this.transform.position = newLoc;
+        }
     }
 
-    public void increaseScore(int score)
+    public void increaseScore(int s)
     {
-
+        score += s;
     }
 
     public void jump()
@@ -242,6 +255,7 @@ public class Hero : MonoBehaviour
     {
         GameObject other = coll.gameObject;
         canJumpChecked = false;
+        Invoke("resetVelocity", .75f);
         //Invoke("CheckJump", .15f);
         /*if(other.tag =="ground")
         {
@@ -285,6 +299,20 @@ public class Hero : MonoBehaviour
 
     }
 
+    void OnTriggerEnter(Collider coll)
+    {
+        GameObject other = coll.gameObject;
+        Debug.Log("Trigger Enter");
+        if (other.tag == "Goal")
+        {
+            Invoke("loadEnd", 3f);
+            int timeScore = System.Convert.ToInt32(Mathf.Ceil(timeLimit) * 10);
+            increaseScore(timeScore);
+            timeScoreT.text = "Time Score = +" + timeScore;
+            timeScoreT.enabled = true;
+        }
+    }
+
     void resetInvincible()
     {
         invincible = false;
@@ -298,6 +326,10 @@ public class Hero : MonoBehaviour
             child.GetComponent<MeshRenderer>().material.color = color;
         }
 
+    }
+    void resetVelocity()
+    {
+        body.velocity = Vector3.zero;
     }
 
     void CheckJump()

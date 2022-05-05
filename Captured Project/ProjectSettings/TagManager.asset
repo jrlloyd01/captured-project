@@ -10,6 +10,8 @@ TagManager:
   - ProjectileEnemy
   - PowerUpS
   - PowerUpR
+  - PowerUpF
+  - Goal
   layers:
   - Default
   - TransparentFX
