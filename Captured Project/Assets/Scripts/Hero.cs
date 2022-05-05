@@ -274,10 +274,12 @@ public class Hero : MonoBehaviour
         else if (other.tag == "PowerUpR")
         {
             rapidFire = true;
-            reloadTime = reloadTime / 3;
+            reloadTime = reloadTime / 2;
+            Destroy(other);
         }
         else if (other.tag == "PowerUpF")
         {
+            Destroy(other);
             flying = true;
         }
 

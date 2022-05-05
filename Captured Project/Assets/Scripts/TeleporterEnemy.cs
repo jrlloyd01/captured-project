@@ -18,32 +18,38 @@ public class TeleporterEnemy : MonoBehaviour
     Vector3 location;
     bool disappeared = false;
     Color color;
-    Rigidbody body;
-    Material mat;
+    //Rigidbody body;
+    //Material mat;
     GameObject lastTrigger = null;
 
     void Awake()
     {
-        mat = this.GetComponent<MeshRenderer>().material;
-        bndCheck = GetComponent<BoundsCheck>();
+        //mat = this.GetComponent<MeshRenderer>().material;
+        bndCheck = this.GetComponent<BoundsCheck>();
     }
 
     void Start()
     {
-        body = this.GetComponent<Rigidbody>();
+        if(bndCheck == null)
+        {
+            Debug.Log("bndCheck is NULL");
+            bndCheck = this.GetComponent<BoundsCheck>();
+        }
+        //body = this.GetComponent<Rigidbody>();
         hero = GameObject.FindWithTag("Hero");
+        opacity = 1f;
     }
 
     void Update()
     {
         if (hero.transform.position.x <= this.transform.position.x)
         {
-            this.transform.rotation = new Quaternion(0, 180, 0, 0);
+            this.transform.rotation = new Quaternion(0, 0, 0, 0);
             left = true;
         }
         else
         {
-            this.transform.rotation = new Quaternion(0, 0, 0, 0);
+            this.transform.rotation = new Quaternion(0, 180, 0, 0);
             left = false;
         }
 
@@ -57,18 +63,10 @@ public class TeleporterEnemy : MonoBehaviour
         else
         {
             elapsedTime += Time.deltaTime;
-            if (this.transform.position.x > hero.transform.position.x)
-            {
-                left = true;
-            }
-            else
-            {
-                left = false;
-            }
-
             if (elapsedTime >= 1f && !shot)
             {
                 fire();
+                Debug.Log("Shot");
             }
             else if (elapsedTime >= 1f && shot)
             {
@@ -119,19 +117,15 @@ public class TeleporterEnemy : MonoBehaviour
             location.x = locationX;
             this.transform.position = new Vector3(locationX, location.y, location.z);
             locationChosen = true;
-            opacity = 0f;
-            color = mat.color;
-            color.a = opacity;
-            mat.color = color;
         }
     }
 
     public void reappear()
     {
         //this.GetComponent<Collider>().enabled = true;
+
         opacity += Time.deltaTime * 2;
-        Debug.Log(opacity);
-        color = mat.color;
+        //Debug.Log(opacity);
         if (opacity >= 1f)
         {
             opacity = 1f;
@@ -140,8 +134,13 @@ public class TeleporterEnemy : MonoBehaviour
             disappeared = false;
             locationChosen = false;
         }
-        color.a = opacity;
-        mat.color = color;
+        Transform[] allChildren = GetComponentsInChildren<Transform>();
+        foreach (Transform child in allChildren)
+        {
+            color = child.GetComponent<MeshRenderer>().material.color;
+            color.a = opacity;
+            child.GetComponent<MeshRenderer>().material.color = color;
+        }
     }
 
     public void disappear()
@@ -155,9 +154,18 @@ public class TeleporterEnemy : MonoBehaviour
             elapsedTime = 0;
             chooseLocation();
         }
-        color = mat.color;
-        color.a = opacity;
-        mat.color = color;
+        Transform[] allChildren = this.GetComponentsInChildren<Transform>();
+        foreach (Transform child in allChildren)
+        {
+            Debug.Log("Children");
+            if(child.GetComponent<MeshRenderer>().material.color == null)
+            {
+                Debug.Log("doesn't contain color");
+            }
+            color = child.GetComponent<MeshRenderer>().material.color;
+            color.a = opacity;
+            child.GetComponent<MeshRenderer>().material.color = color;
+        }
     }
 
     void OnCollisionEnter(Collision coll)
