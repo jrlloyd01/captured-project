@@ -129,6 +129,13 @@ public class Hero : MonoBehaviour
         if (this.transform.position.y <= -10)
         {
             health = 0;
+            Destroy(this.gameObject);
+            Invoke("loadEnd", 1f);
+        }
+        if (timeLimit <= 0)
+        {
+            health = 0;
+            Destroy(this.gameObject);
             Invoke("loadEnd", 1f);
         }
         if(this.transform.position.y >=30)
